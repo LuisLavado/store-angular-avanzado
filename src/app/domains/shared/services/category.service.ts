@@ -8,8 +8,6 @@ import { Category } from '@shared/models/category.model';
 export class CategoryService {
   private http = inject(HttpClient);
 
-  constructor() { }
-
   getAll() {
     return this.http.get<Category[]>(`https://api.escuelajs.co/api/v1/categories`);
   }

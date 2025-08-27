@@ -1,4 +1,4 @@
-import { Component, Input, SimpleChanges, signal } from '@angular/core';
+import { Component, Input, SimpleChanges, signal, OnChanges, OnInit, AfterViewInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -6,7 +6,7 @@ import { CommonModule } from '@angular/common';
     imports: [CommonModule],
     templateUrl: './counter.component.html'
 })
-export class CounterComponent {
+export class CounterComponent implements OnChanges, OnInit, AfterViewInit, OnDestroy {
   @Input({required: true}) duration = 0;
   @Input({required: true}) message = '';
   counter = signal(0);
