@@ -5,12 +5,11 @@ import { Product } from '@shared/models/product.model';
 import { CartService } from '@shared/services/cart.service';
 
 @Component({
-    selector: 'app-product-detail',
-    imports: [CommonModule],
-    templateUrl: './product-detail.component.html'
+  selector: 'app-product-detail',
+  imports: [CommonModule],
+  templateUrl: './product-detail.component.html',
 })
 export default class ProductDetailComponent implements OnInit {
-
   @Input() id?: string;
   product = signal<Product | null>(null);
   cover = signal('');
@@ -19,15 +18,14 @@ export default class ProductDetailComponent implements OnInit {
 
   ngOnInit() {
     if (this.id) {
-      this.productService.getOne(this.id)
-      .subscribe({
+      this.productService.getOne(this.id).subscribe({
         next: (product) => {
           this.product.set(product);
           if (product.images.length > 0) {
-            this.cover.set(product.images[0])
+            this.cover.set(product.images[0]);
           }
-        }
-      })
+        },
+      });
     }
   }
 
@@ -41,6 +39,4 @@ export default class ProductDetailComponent implements OnInit {
       this.cartService.addToCart(product);
     }
   }
-
-
 }
