@@ -3,10 +3,9 @@ import { Injectable, inject } from '@angular/core';
 import { Product } from '../models/product.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ProductService {
-
   private http = inject(HttpClient);
 
   getProducts(category_id?: string) {
@@ -18,6 +17,8 @@ export class ProductService {
   }
 
   getOne(id: string) {
-    return this.http.get<Product>(`https://api.escuelajs.co/api/v1/products/${id}`);
+    return this.http.get<Product>(
+      `https://api.escuelajs.co/api/v1/products/${id}`,
+    );
   }
 }
